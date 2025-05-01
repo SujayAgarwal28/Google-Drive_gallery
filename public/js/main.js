@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <a href="/events/${event.id}">
               ${
                 event.coverId
-                  ? `<div class="event-cover" style="background-image: url('https://drive.google.com/thumbnail?id=${event.coverId}&sz=w400-h400${cacheBuster}')"></div>`
+                  ? `<div class="event-cover" style="background-image: url('/api/imageproxy/${event.coverId}?size=w400${cacheBuster}')"></div>`
                   : `<div class="folder-icon">${event.folderIcon}</div>`
               }
               <div class="event-info">
@@ -260,7 +260,7 @@ async function loadEvents(bypassCache = false) {
             <a href="/events/${event.id}">
               ${
                 event.coverId
-                  ? `<div class="event-cover" style="background-image: url('https://drive.google.com/thumbnail?id=${event.coverId}&sz=w400-h400${cacheBuster}')"></div>`
+                  ? `<div class="event-cover" style="background-image: url('/api/imageproxy/${event.coverId}?size=w400${cacheBuster}')"></div>`
                   : `<div class="folder-icon">${event.folderIcon}</div>`
               }
               <div class="event-info">
