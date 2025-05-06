@@ -110,8 +110,10 @@ document.addEventListener("DOMContentLoaded", function () {
             <a href="/events/${event.id}">
               ${
                 event.coverId
-                  ? `<div class="event-cover-container"><div class="event-cover" style="background-image: url('/api/imageproxy/${event.coverId}?size=w400${cacheBuster}')"></div></div>`
-                  : `<div class="event-cover-container"><div class="folder-icon">${event.folderIcon}</div></div>`
+
+    
+                  ? `<div class="event-cover" style="background-image: url('/api/imageproxy/${event.coverId}?size=w400${cacheBuster}')"></div>`
+                  : `<div class="folder-icon">${event.folderIcon}</div>`
               }
               <div class="event-info">
                 <h3>${event.name}</h3>
@@ -259,8 +261,10 @@ async function loadEvents(bypassCache = false) {
             <a href="/events/${event.id}">
               ${
                 event.coverId
-                  ? `<div class="event-cover-container"><div class="event-cover" style="background-image: url('/api/imageproxy/${event.coverId}?size=w400${cacheBuster}')"></div></div>`
-                  : `<div class="event-cover-container"><div class="folder-icon">${event.folderIcon}</div></div>`
+
+                  ? `<div class="event-cover" style="background-image: url('/api/imageproxy/${event.coverId}?size=w400${cacheBuster}')"></div>`
+                  : `<div class="folder-icon">${event.folderIcon}</div>`
+
               }
               <div class="event-info">
                 <h3>${event.name}</h3>
