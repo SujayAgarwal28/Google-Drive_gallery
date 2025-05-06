@@ -446,10 +446,18 @@ app.get("/api/folders/:folderId/contents", async (req, res) => {
     const items = await Promise.all(
       response.data.files.map(async (item) => {
         if (item.mimeType === "application/vnd.google-apps.folder") {
+          // Check for images inside this folder for coverId
+          const images = await drive.files.list({
+            q: `'${item.id}' in parents and mimeType contains 'image/'`,
+            pageSize: 1,
+            fields: "files(id)",
+          });
+          const coverId = images.data.files[0]?.id || null;
           return {
             ...item,
             type: "folder",
-            folderIcon: getFolderIcon(item.name),
+            coverId,
+            folderIcon: coverId ? null : getFolderIcon(item.name),
           };
         } else if (item.mimeType.includes("image/")) {
           return {
